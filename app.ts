@@ -4,9 +4,19 @@ import session from "express-session";
 import path from "path";
 import passportMiddleware from './middleware/passportMiddleware';
 
+// cmd: ts-node-dev app.ts
+
 const port = process.env.port || 8000;
 
 const app = express();
+
+declare module 'express-session' {
+  interface SessionData {
+    messages: string[]; //define messages property
+  }
+}
+
+// app.get('/login', (req, res) => {res.render('login', {messages: req.session.messages})});
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));

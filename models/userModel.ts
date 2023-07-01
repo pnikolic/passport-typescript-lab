@@ -21,20 +21,22 @@ const database = [
 
 const userModel = {
 
-  /* FIX ME (types) 😭 */
-  findOne: (email: any) => {
+  /* FIX ME (types) 😭 - DONE i think :) */ 
+  findOne: (email: string) => {
     const user = database.find((user) => user.email === email);
     if (user) {
       return user;
     }
     throw new Error(`Couldn't find user with email: ${email}`);
   },
-  /* FIX ME (types) 😭 */
-  findById: (id: any) => {
+
+  /* FIX ME (types) 😭 - DONE i think :) */
+  findById: (id: number) => {
     const user = database.find((user) => user.id === id);
     if (user) {
       return user;
     }
+    
     throw new Error(`Couldn't find user with id: ${id}`);
   },
 };

@@ -4,6 +4,11 @@
       <h1 class="mb-3">
         <img src="/secure-icon.png" alt="icon" width="20%" />
       </h1>
+      <span style="color: red;">
+      <% if(typeof messages != 'undefined'){ %>
+          <%= messages[0] %>
+      <% }%>
+    </span>
       <h2>Login</h2>
       <form action="/auth/login" method="POST">
         <div class="form-group">
@@ -28,6 +33,11 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
+      <p style="margin-top: 10px;">
+        <a href="/auth/github">
+          <button class="btn btn-primary btn-block" style="background-color: black; border-color: black;">Login with github</button>
+        </a>
+      </p>
       <p class="mt-4">New User? <a href="/auth/register">Register</a></p>
       <p>Forgot Password? <a href="/auth/forgot">Reset</a></p>
     </div>

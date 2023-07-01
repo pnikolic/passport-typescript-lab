@@ -2,19 +2,24 @@ import {userModel} from "../models/userModel";
 
 const getUserByEmailIdAndPassword = (email: string, password: string) => {
   let user = userModel.findOne(email);
-  if (user) {
+  if (user) { // user exists
     if (isUserValid(user, password)) {
-      return user;
+      return user; // successful check
     }
+    
   }
-  return null;
+  
+  throw new Error("User does not exist"); // else the user email does not exist.
+  //return  null; // This needs to be changed, not throwing error.
 };
-const getUserById = (id:any) => {
+const getUserById = (id:number) => {
   let user = userModel.findById(id);
   if (user) {
     return user;
   }
-  return null;
+
+  throw new Error("User does not exist");
+  // return null;
 };
 
 function isUserValid(user: any, password: string) {
